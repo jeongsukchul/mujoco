@@ -1,0 +1,43 @@
+<mujoco>
+    <option gravity="0 0 -9.81"/>
+    <asset>
+        <texture builtin="gradient" type="skybox" height="100" width="100" rgb1="1 1 1" rgb2="0 0 0"/>
+        <texture name="texgeom" builtin="flat" height="1278" mark="cross" markrgb="1 1 1" random="0.01" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" type="cube" width="127"/>
+        <texture name="texplane" builtin="checker" height="100" width="100" rgb1="0 0 0" rgb2="0.8 0.8 0.8" type="2d"/>
+        <material name="MatPlane" reflectance="0.5" shininess="1" specular="1" texrepeat="60 60" texture="texplane"/>
+        <material name="geom" texture="texgeom" texuniform="true"/>
+    </asset>
+    <worldbody>
+        <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
+        <geom type="plane" size="1 1 1" rgba=".9 0 0 1"/>
+        <body pos="0 0 2" euler="0 0 0" name="body">
+            <geom name="core_geom" type="box" pos="0 0 0" euler="0 0 45" size="0.0707 0.0707 .02" rgba=".3 .3 .8 1"/>
+
+            <geom name="arm_front_left" type="box" pos=".1 0 0" size=".1 .005 .005" euler="0 0 0" rgba=".3 .3 .8 1"/>
+            <geom name="arm_front_right" type="box" pos="0 .1 0" size=".1 .005 .005" euler="0 0 90" rgba=".3 .3 .8 1"/>
+            <geom name="arm_back_right" type="box" pos="-.1 0 0" size=".1 .005 .005" euler="0 0 0" rgba=".3 .3 .8 1"/>
+            <geom name="arm_back_left" type="box" pos="0 -.1 0" size=".1 .005 .005" euler="0 0 90" rgba=".3 .3 .8 1"/>
+
+            <geom name="thruster_front_left" type="cylinder" pos=".2 0 .0075" size=".05 .0025" quat="1 0 0 0" rgba=".3 .8 .3 0.6"/>
+            <geom name="thruster_front_right" type="cylinder" pos="0 .2 .0075" size=".05 .0025" quat="1 0 0 0" rgba=".3 .8 .3 0.6"/>
+            <geom name="thruster_back_right" type="cylinder" pos="-.2 0 .0075" size=".05 .0025" quat="1 0 0 0" rgba=".3 .8 .3 0.6"/>
+            <geom name="thruster_back_left" type="cylinder" pos="0 -.2 .0075" size=".05 .0025" quat="1 0 0 0" rgba=".3 .8 .3 0.6"/>
+            <inertial pos="0 0 0" mass="2.5" diaginertia="2 2 3" />
+            <joint name="root" type="free" damping="0" armature="0" pos="0 0 0" limited="false"/>
+            <site name="u1" pos =".2 0 .0075"/>
+            <site  name="u2" pos ="0 0.2 .0075" />
+            <site  name="u3" pos ="-.2 0 .0075" />
+            <site  name="u4" pos ="0 -.2 .0075" />
+        </body>
+    </worldbody>
+    <actuator>
+        <motor ctrllimited="true" ctrlrange="0 1000" site="u1" gear="0 0 1 0 0 0.1"/>
+        <motor ctrllimited="true" ctrlrange="0 1000" site="u2" gear="0 0 1 0 0 -0.1"/>
+
+        <motor ctrllimited="true" ctrlrange="0 1000" site="u3" gear="0 0 1 0 0 0.1"/>
+
+        <motor ctrllimited="true" ctrlrange="0 1000" site="u4" gear="0 0 1 0 0 -0.1"/>
+<!--        <motor name="n1" joint="n1"  gear="1"/>-->
+<!--        <motor name="n2" joint="n2"  gear="1"/>-->
+    </actuator>
+</mujoco>

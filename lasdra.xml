@@ -1,0 +1,86 @@
+<mujoco>
+    <asset>
+        <mesh name="link0" file="odar_coord_conform_v4.stl"/>
+    </asset>
+    <option gravity="0 0 0"/>
+    <worldbody>
+    <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
+    <geom type="plane" size="1.11 1.11 1.01" rgba=".9 0 0 1"/>
+        <body pos="0 0 1">
+            <geom type="cylinder" size="0.05 0.99" rgba="0 1 0 1"/>
+            <body pos="0 0 1.5" euler="0 -90 0">
+                <geom type="mesh" group="0" mesh="link0" euler="0 0 0"/>
+                <joint name="joint0-0" type="hinge" axis = "1 0 0" pos = "-.5 0 0"/>
+                <joint name="joint0-1" type="hinge" axis = "0 1 0" pos = "-.5 0 0 "/>
+                <joint name="joint0-2" type="hinge" axis = "0 0 1" pos = "-.5 0 0 "/>
+                <body pos="1 0 0" euler="0 0 0">
+                    <geom type="mesh" group="0" mesh="link0" euler="0 0 0"/>
+                    <joint name="joint1-1" type="hinge" axis = "0 1 0" pos = "-.5 0 0 "/>
+                    <joint name="joint1-2" type="hinge" axis = "0 0 1" pos = "-.5 0 0 "/>
+                    <body pos="1 0 0" euler="0 0 0">
+                        <geom type="mesh" group="0" mesh="link0" euler="0 0 0"/>
+                        <joint name="joint2-1" type="hinge" axis = "0 1 0" pos = "-.5 0 0 "/>
+                        <joint name="joint2-2" type="hinge" axis = "0 0 1" pos = "-.5 0 0 "/>
+                        <body pos="1 0 0" euler="0 0 0">
+                            <geom type="mesh" group="0" mesh="link0" euler="0 0 0"/>
+                            <joint name="joint3-1" type="hinge" axis = "0 1 0" pos = "-.5 0 0 "/>
+                            <joint name="joint3-2" type="hinge" axis = "0 0 1" pos = "-.5 0 0 "/>
+                            <body pos="1 0 0" euler="0 0 0">
+                                <geom type="mesh" group="0" mesh="link0" euler="0 0 0"/>
+                                <joint name="joint4-1" type="hinge" axis = "0 1 0" pos = "-.5 0 0 "/>
+                                <joint name="joint4-2" type="hinge" axis = "0 0 1" pos = "-.5 0 0 "/>
+                                <body pos="1 0 0" euler="0 0 0">
+                                    <geom type="mesh" group="0" mesh="link0" euler="0 0 0"/>
+                                    <joint name="joint5-1" type="hinge" axis = "0 1 0" pos = "-.5 0 0 "/>
+                                    <joint name="joint5-2" type="hinge" axis = "0 0 1" pos = "-.5 0 0 "/>
+                                    <body pos="1 0 0" euler ="0 0 0">
+                                        <joint name="joint6-1" type="hinge" axis = "0 1 0" pos = "-.5 0 0 "/>
+                                        <joint name="joint6-2" type="hinge" axis = "0 0 1" pos = "-.5 0 0 "/>
+                                        <geom type="mesh" group="0" mesh="link0" euler="0 0 0"/>
+                                        <site name="tip" size="0.01" pos="0.5 0 0"/>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+    <actuator>
+        <motor name="torque0-0" joint="joint0-0"  gear="1"/>
+        <motor name="torque0-1" joint="joint0-1"  gear="1"/>
+        <motor name="torque0-2" joint="joint0-2"  gear="1"/>
+        <motor name="torque1-1" joint="joint1-1"  gear="1"/>
+        <motor name="torque1-2" joint="joint1-2"  gear="1"/>
+        <motor name="torque2-1" joint="joint2-1"  gear="1"/>
+        <motor name="torque2-2" joint="joint2-2"  gear="1"/>
+<!--        <motor name="torque3-1" joint="joint3-1"  gear="1"/>-->
+<!--        <motor name="torque3-2" joint="joint3-2"  gear="1"/>-->
+<!--        <motor name="torque4-1" joint="joint4-1"  gear="1"/>-->
+<!--        <motor name="torque4-2" joint="joint4-2"  gear="1"/>-->
+<!--        <motor name="torque5-1" joint="joint5-1"  gear="1"/>-->
+<!--        <motor name="torque5-2" joint="joint5-2"  gear="1"/>-->
+<!--        <motor name="torque6-1" joint="joint6-1"  gear="1"/>-->
+<!--        <motor name="torque6-2" joint="joint6-2"  gear="1"/>-->
+
+<!--        <position name="position0-0" joint="joint0-0" kp="1"/>-->
+<!--        <position name="position0-1" joint="joint0-1" kp="1"/>-->
+<!--        <position name="position0-2" joint="joint0-2" />-->
+<!--        <position name="position1-1" joint="joint1-1" />-->
+<!--        <position name="position1-2" joint="joint1-2" />-->
+<!--        <position name="position2-1" joint="joint2-1" kp="0"/>-->
+<!--        <position name="position2-2" joint="joint2-2" kp="0"/>-->
+<!--        <position name="position3-1" joint="joint3-1" kp="0"/>-->
+<!--        <position name="position3-2" joint="joint3-2" kp="0"/>-->
+<!--        <position name="position4-1" joint="joint4-1" kp="0"/>-->
+<!--        <position name="position4-2" joint="joint4-2" kp="0"/>-->
+<!--        <position name="position5-1" joint="joint5-1" kp="0"/>-->
+<!--        <position name="position5-2" joint="joint5-2" kp="0"/>-->
+<!--        <position name="position6-1" joint="joint6-1" kp="0"/>-->
+<!--        <position name="position6-2" joint="joint6-2" kp="0"/>-->
+    </actuator>
+    <sensor>
+		<framepos objtype="site" objname="tip"/>
+	</sensor>
+</mujoco>
